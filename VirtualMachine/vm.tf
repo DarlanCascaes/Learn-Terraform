@@ -12,11 +12,6 @@ provider "azurerm"{
   skip_provider_registration = "true"
 }
 
-resource "azurerm_resource_group" "rg" {
-  location = "eastus"
-  name     = "rg_sb_eastus_40287_1_170786208393"
-}
-
 # Create virtual network
 resource "azurerm_virtual_network" "terraform_network" {
   name                = "terraform_network-vnet"
@@ -93,7 +88,7 @@ resource "azurerm_network_interface_security_group_association" "example" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "terraform_storage_account" {
-  name                     = "terraformstorageaccount"
+  name                     = "darlantfstorageaccount"
   location                 = "eastus"
   resource_group_name      = "rg_sb_eastus_40287_1_170786208393"
   account_tier             = "Standard"
@@ -112,7 +107,7 @@ resource "azurerm_windows_virtual_machine" "main" {
   size                  = "standard_B1s"
 
   os_disk {
-    name                 = "terraformDisk"
+    name                 = "darlanterraformDisk"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
