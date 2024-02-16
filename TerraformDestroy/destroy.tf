@@ -1,0 +1,1 @@
+tarraform destroy -target nomeDoRecursoNoTfFile
