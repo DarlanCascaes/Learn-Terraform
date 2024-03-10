@@ -30,6 +30,6 @@ resource "azurerm_network_security_group" "terraform_lab_nsg" {
 
 #Connecting NSG into the Subnet
 resource "azurerm_subnet_network_security_group_association" "terraform_lab_nsg_ga" {
-    subnet_id = azurerm_subnet.terraform_lab_subnet
+    subnet_id = azurerm_subnet.terraform_lab_subnet.id
     network_security_group_id = azurerm_network_security_group.terraform_lab_nsg.id
 }
