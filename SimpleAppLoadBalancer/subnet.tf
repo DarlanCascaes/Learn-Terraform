@@ -7,11 +7,6 @@ terraform{
     }
 }
 
-provider "azurerm"{
-    features{}
-    skip_provider_registration = "true"
-}
-
 #Creating subnet for @Vnet which will be used for LB and VMs
 resource "azurerm_subnet" "terraform_lab_subnet" {
   name = "terraform-lab-snet"

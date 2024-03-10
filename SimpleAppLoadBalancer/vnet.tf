@@ -7,11 +7,6 @@ terraform{
     }
 }
 
-provider "azurerm"{
-    features{}
-    skip_provider_registration = "true"
-}
-
 #Creating the virtual network which will be used for LB and VMs
 resource "azurerm_virtual_network" "terraform_lab_vnet" {
   name = "terraform-lab-vnet"

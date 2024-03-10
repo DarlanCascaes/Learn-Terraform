@@ -7,10 +7,6 @@ terraform {
   }
 }
 
-provider "azurerm"{
-  features {}
-  skip_provider_registration = "true"
-}
 
 #Creating the NSG which will be used for @LPublicIp
 resource "azurerm_network_security_group" "terraform_lab_nsg" {

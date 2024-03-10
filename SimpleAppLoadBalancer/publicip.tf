@@ -7,11 +7,6 @@ terraform {
   }
 }
 
-provider "azurerm"{
-  features {}
-  skip_provider_registration = "true"
-}
-
 #Creating the public ip which will be used for @LoadBalancer
 resource "azurerm_public_ip" "terraform_lab_pip" {
   name = "terraform-lab-pip"

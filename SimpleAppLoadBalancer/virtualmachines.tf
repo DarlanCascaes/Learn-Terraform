@@ -7,11 +7,6 @@ terraform {
   }
 }
 
-provider "azurerm"{
-  features {}
-  skip_provider_registration = "true"
-}
-
 #Creating the VMs whici will be hosting the WEB page
 resource "azurerm_windowsvirtual_machine" "terraform_lab_vm1" {
   name = "terraform-lab-vm1"

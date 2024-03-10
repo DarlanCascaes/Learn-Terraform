@@ -7,9 +7,15 @@ terraform{
     }
 }
 
+
+provider "azurerm"{
+    features{}
+    skip_provider_registration = "true"
+}
+
 resource "azurerm_lb" "terraform_lab_lb" {
   name = "terraform-lab-lb"
-  resource_group_name = "rg_sb_eastus_40287_1_171010357883"
+  resource_group_name = ""
   sku = "Standard"
   location = "eastus"
 
