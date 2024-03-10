@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "3.91.0"
-    }
-  }
-}
-
 
 resource "azurerm_network_interface" "terraform_lab_nic" {
     count = 2

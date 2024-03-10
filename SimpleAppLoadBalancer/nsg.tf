@@ -1,13 +1,3 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "3.91.0"
-    }
-  }
-}
-
-
 #Creating the NSG which will be used for @LPublicIp
 resource "azurerm_network_security_group" "terraform_lab_nsg" {
   name = "terraform-lab-nsg"

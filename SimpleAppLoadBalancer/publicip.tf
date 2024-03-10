@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "3.91.0"
-    }
-  }
-}
-
 #Creating the public ip which will be used for @LoadBalancer
 resource "azurerm_public_ip" "terraform_lab_pip" {
   name = "terraform-lab-pip"

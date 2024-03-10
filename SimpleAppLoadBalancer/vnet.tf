@@ -1,12 +1,3 @@
-terraform{
-    required_providers{
-        azurerm = {
-            source = "hashicorp/azurerm"
-            version = "3.91.0"
-        }
-    }
-}
-
 #Creating the virtual network which will be used for LB and VMs
 resource "azurerm_virtual_network" "terraform_lab_vnet" {
   name = "terraform-lab-vnet"

@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "3.91.0"
-    }
-  }
-}
-
 #Creating the VMs whici will be hosting the WEB page
 resource "azurerm_windowsvirtual_machine" "terraform_lab_vm1" {
   name = "terraform-lab-vm1"
