@@ -19,12 +19,14 @@ resource "azurerm_windowsvirtual_machine" "terraform_lab_vm1" {
 
 }
 
-resource "azurerm_windowsvirtual_machine" "terraform_lab_vm2" {
+resource "azurerm_windows_virtual_machine" "terraform_lab_vm2" {
   name = "terraform-lab-vm2"
   location = "eastus"
   resource_group_name = "rg_sb_eastus_40287_1_171010357883"
   network_interface_ids = azurerm_network_interface.terraform_lab_nic2.id
-  vm_size = standard_B1s
+  size = standard_B1s
+  admin_username = "dcascaes"
+  admin_password = "dcascaes666"
   os_disk {
     name = "terraform-lab-vm2-disk"
     caching = "ReadWrite"
