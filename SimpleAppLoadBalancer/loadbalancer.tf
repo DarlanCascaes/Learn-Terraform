@@ -15,13 +15,13 @@ provider "azurerm"{
 
 resource "azurerm_lb" "terraform_lab_lb" {
   name = "terraform-lab-lb"
-  resource_group_name = ""
+  resource_group_name = "rg_sb_eastus_40287_1_171010357883"
   sku = "Standard"
   location = "eastus"
 
   frontend_ip_configuration {
     name = "terraform-lab-fip"
-    public_ip_address_id = "terraform-lab-pip"
+    public_ip_address_id = terraform-lab-pip.id
     }      
 }
 

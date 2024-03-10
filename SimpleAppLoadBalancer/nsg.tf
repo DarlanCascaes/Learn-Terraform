@@ -4,7 +4,7 @@ resource "azurerm_network_security_group" "terraform_lab_nsg" {
   resource_group_name = "rg_sb_eastus_40287_1_171010357883"
   location = "eastus"
 
-  security_rule = {
+  security_rule {
     name = "RDP"
     priority = "1000"
     direction = "Inbound"
@@ -14,7 +14,8 @@ resource "azurerm_network_security_group" "terraform_lab_nsg" {
     destination_port_range = "3389"
     source_address_prefix = "*"
     destination_address_prefix = "*"
-  
+  }
+  security_rule {
     name = "WEB"
     priority = "2000"
     direction = "Inbound"
