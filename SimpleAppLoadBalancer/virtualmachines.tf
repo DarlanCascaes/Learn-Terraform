@@ -1,5 +1,6 @@
 #Creating the VMs whici will be hosting the WEB page
 resource "azurerm_windows_virtual_machine" "terraform_lab_vm1" {
+  count = 2
   name = "terraform-lab-vm1"
   location = "eastus"
   resource_group_name = "rg_sb_eastus_40287_1_171010357883"
@@ -20,6 +21,7 @@ resource "azurerm_windows_virtual_machine" "terraform_lab_vm1" {
   }
 
 }
+
 
 resource "azurerm_windows_virtual_machine" "terraform_lab_vm2" {
   name = "terraform-lab-vm2"

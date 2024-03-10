@@ -21,7 +21,7 @@ resource "azurerm_lb" "terraform_lab_lb" {
 
   frontend_ip_configuration {
     name = "terraform-lab-fip"
-    public_ip_address_id = terraform-lab-pip.id
+    public_ip_address_id = azurerm_public_ip.terraform_lab_pip.id
     }      
 }
 
