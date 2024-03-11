@@ -2,7 +2,23 @@
 resource "azurerm_public_ip" "terraform_lab_pip" {
   name = "terraform-lab-pip"
   location = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_171012527887"
+  resource_group_name = "rg_sb_eastus_40287_1_17101598418"
+  allocation_method = "Static"
+  sku = "Standard"
+}
+
+resource "azurerm_public_ip" "terraform_lab_vm1_pip" {
+  name = "terraform-lab-vm1-pip"
+  location = "eastus"
+  resource_group_name = "rg_sb_eastus_40287_1_17101598418"
+  allocation_method = "Static"
+  sku = "Standard"
+}
+
+resource "azurerm_public_ip" "terraform_lab_vm2_pip" {
+  name = "terraform-lab-vm2-pip"
+  location = "eastus"
+  resource_group_name = "rg_sb_eastus_40287_1_17101598418"
   allocation_method = "Static"
   sku = "Standard"
 }

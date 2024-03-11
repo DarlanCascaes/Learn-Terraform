@@ -1,7 +1,7 @@
 #Creating the NSG which will be used for @LPublicIp
 resource "azurerm_network_security_group" "terraform_lab_nsg" {
   name = "terraform-lab-nsg"
-  resource_group_name = "rg_sb_eastus_40287_1_171012527887"
+  resource_group_name = "rg_sb_eastus_40287_1_17101598418"
   location = "eastus"
 
   security_rule {

@@ -14,7 +14,7 @@ provider "azurerm"{
 
 resource "azurerm_lb" "terraform_lab_lb" {
   name = "terraform-lab-lb"
-  resource_group_name = "rg_sb_eastus_40287_1_171012527887"
+  resource_group_name = "rg_sb_eastus_40287_1_17101598418"
   sku = "Standard"
   location = "eastus"
 
