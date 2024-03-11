@@ -7,7 +7,6 @@ terraform{
     }
 }
 
-
 provider "azurerm"{
     features{}
     skip_provider_registration = "true"
@@ -15,13 +14,14 @@ provider "azurerm"{
 
 resource "azurerm_lb" "terraform_lab_lb" {
   name = "terraform-lab-lb"
-  resource_group_name = "rg_sb_eastus_40287_1_171010357883"
+  resource_group_name = "rg_sb_eastus_40287_1_171012527887"
   sku = "Standard"
   location = "eastus"
 
   frontend_ip_configuration {
     name = "terraform-lab-fip"
     public_ip_address_id = azurerm_public_ip.terraform_lab_pip.id
+    //subnet_id = azurerm_subnet.terraform_lab_subnet.id
     }      
 }
 
@@ -31,15 +31,17 @@ resource "azurerm_lb_backend_address_pool" "terraform_lab_bp" {
     virtual_network_id = azurerm_virtual_network.terraform_lab_vnet.id
 }
 
-resource "azurerm_network_interface_backend_address_pool_association" "terraform_lab_lbas1" {
-  backend_address_pool_id = azurerm_lb.terraform_lab_lb.id
-  ip_configuration_name = "terraform-lab-bp-config"
-  network_interface_id = azurerm_network_interface.terraform_lab_nic1.id
+resource "azurerm_lb_backend_address_pool_address" "terraform_lab_lbap1" {
+  name = "terraform_lab-ada1"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.terraform_lab_bp.id
+  virtual_network_id = azurerm_virtual_network.terraform_lab_vnet.id
+  ip_address = azurerm_windows_virtual_machine.terraform_lab_vm1.private_ip_address
 
 }
-resource "azurerm_network_interface_backend_address_pool_association" "terraform_lab_lbas2" {
-  backend_address_pool_id = azurerm_lb.terraform_lab_lb.id
-  ip_configuration_name = "terraform-lab-bp-config"
-  network_interface_id = azurerm_network_interface.terraform_lab_nic2.id
 
+resource "azurerm_lb_backend_address_pool_address" "terraform_lab_lbap2" {
+  name = "terraform_lab-ada2"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.terraform_lab_bp.id
+  virtual_network_id = azurerm_virtual_network.terraform_lab_vnet.id
+  ip_address = azurerm_windows_virtual_machine.terraform_lab_vm2.private_ip_address
 }
