@@ -1,7 +1,7 @@
 #Creating the NSG which will be used for @LPublicIp
 resource "azurerm_network_security_group" "terraform_lab_nsg" {
   name = "terraform-lab-nsg"
-  resource_group_name = "rg_sb_eastus_40287_1_17101598418"
+  resource_group_name = ""
   location = "eastus"
 
   security_rule {
@@ -16,9 +16,20 @@ resource "azurerm_network_security_group" "terraform_lab_nsg" {
     destination_address_prefix = "*"
   }
   security_rule {
-    name = "WEB"
+    name = "WEBIN"
     priority = "2000"
     direction = "Inbound"
+    access = "Allow"
+    protocol = "Tcp"
+    source_port_range = "*"
+    destination_port_range = "80"
+    source_address_prefix = "*"
+    destination_address_prefix = "*"
+  }
+  security_rule {
+    name = "WEBOUT"
+    priority = "2001"
+    direction = "Outbound"
     access = "Allow"
     protocol = "Tcp"
     source_port_range = "*"

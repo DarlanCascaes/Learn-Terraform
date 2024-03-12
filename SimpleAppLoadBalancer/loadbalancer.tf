@@ -14,7 +14,7 @@ provider "azurerm"{
 
 resource "azurerm_lb" "terraform_lab_lb" {
   name = "terraform-lab-lb"
-  resource_group_name = "rg_sb_eastus_40287_1_17101598418"
+  resource_group_name = ""
   sku = "Standard"
   location = "eastus"
 
@@ -44,4 +44,15 @@ resource "azurerm_lb_backend_address_pool_address" "terraform_lab_lbap2" {
   backend_address_pool_id = azurerm_lb_backend_address_pool.terraform_lab_bp.id
   virtual_network_id = azurerm_virtual_network.terraform_lab_vnet.id
   ip_address = azurerm_windows_virtual_machine.terraform_lab_vm2.private_ip_address
+}
+
+resource "azurerm_lb_rule" "terraform_lab_ir" {
+    name = "terraform-lab-ir"
+    protocol = "Tcp"
+    backend_port = "80"
+    frontend_port = "80"
+    loadbalancer_id = azurerm_lb.terraform_lab_lb.id
+    frontend_ip_configuration_name = azurerm_lb.terraform_lab_lb.frontend_ip_configuration[0].name
+    backend_address_pool_ids = [azurerm_lb_backend_address_pool.terraform_lab_bp.id]
+    probe_id = azurerm_lb_probe.terraform_lab_probe.id
 }

@@ -1,6 +1,6 @@
 
 resource "azurerm_network_interface" "terraform_lab_nic1" {
-    resource_group_name = "rg_sb_eastus_40287_1_17101598418"
+    resource_group_name = ""
     location = "eastus"
     name = "terraform-lab-nic1"
     ip_configuration {
@@ -14,7 +14,7 @@ resource "azurerm_network_interface" "terraform_lab_nic1" {
 }
 
 resource "azurerm_network_interface" "terraform_lab_nic2" {
-    resource_group_name = "rg_sb_eastus_40287_1_17101598418"
+    resource_group_name = ""
     location = "eastus"
     name = "terraform-lab-nic2"
     ip_configuration {
