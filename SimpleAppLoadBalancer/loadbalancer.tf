@@ -14,7 +14,7 @@ provider "azurerm"{
 
 resource "azurerm_lb" "lbe-test-eastus-001" {
   name = "lbe-test-eastus-001"
-  resource_group_name = ""
+  resource_group_name = "rg_sb_eastus_40287_1_171024271790"
   sku = "Standard"
   location = "eastus"
 
@@ -35,7 +35,7 @@ resource "azurerm_lb_backend_address_pool_address" "lbe-test-eastus-001" {
   name = "lbe-test-eastus-001"
   backend_address_pool_id = azurerm_lb_backend_address_pool.bep-lbe-test-001.id
   virtual_network_id = azurerm_virtual_network.vnet-test-eastus-001.id
-  ip_address = azurerm_windows_virtual_machine.vm-casclab-test-001.private_ip_address
+  ip_address = azurerm_windows_virtual_machine.vmcasclabtest01.private_ip_address
 
 }
 
@@ -43,7 +43,7 @@ resource "azurerm_lb_backend_address_pool_address" "lbe-test-eastus-002" {
   name = "lbe-test-eastus-002"
   backend_address_pool_id = azurerm_lb_backend_address_pool.bep-lbe-test-001.id
   virtual_network_id = azurerm_virtual_network.vnet-test-eastus-001.id
-  ip_address = azurerm_windows_virtual_machine.vm-casclab-test-002.private_ip_address
+  ip_address = azurerm_windows_virtual_machine.vmcasclabtest02.private_ip_address
 }
 
 resource "azurerm_lb_rule" "inr-lbe-test-001" {
