@@ -1,15 +1,15 @@
 #Creating the VMs whici will be hosting the WEB page
-resource "azurerm_windows_virtual_machine" "terraform_lab_vm1" {
-  name = "terraformlab1"
+resource "azurerm_windows_virtual_machine" "vm-casclab-test-001" {
+  name = "vm-casclab-test-001"
   location = "eastus"
   resource_group_name = ""
-  network_interface_ids = [azurerm_network_interface.terraform_lab_nic1.id]
+  network_interface_ids = [azurerm_network_interface.nic-01-vmcasclab1-test-001.id]
   size = "standard_B2ms"
   admin_username = ""
   admin_password = ""
 
   os_disk {
-    name = "terraformlab1-disk"
+    name = "stcasclab001"
     caching = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
@@ -22,10 +22,10 @@ resource "azurerm_windows_virtual_machine" "terraform_lab_vm1" {
 
 }
 
-resource "azurerm_virtual_machine_extension" "terraform_lab_vm1_extension" {
-  virtual_machine_id = azurerm_windows_virtual_machine.terraform_lab_vm1.id
+resource "azurerm_virtual_machine_extension" "ex-casclab-test-001" {
+  virtual_machine_id = azurerm_windows_virtual_machine.vm-casclab-test-001.id
   publisher = "Microsoft.Compute"
-  name = "terraform-lab-vm1-extension-iis"
+  name = "ex-casclab-test-002"
   type = "CustomScriptExtension"
   type_handler_version = "1.8"
   settings = <<SETTINGS
@@ -35,16 +35,16 @@ resource "azurerm_virtual_machine_extension" "terraform_lab_vm1_extension" {
 SETTINGS
 }
 
-resource "azurerm_windows_virtual_machine" "terraform_lab_vm2" {
-  name = "terraformlab2"
+resource "azurerm_windows_virtual_machine" "vm-casclab-test-002" {
+  name = "vm-casclab-test-002"
   location = "eastus"
   resource_group_name = ""
-  network_interface_ids = [azurerm_network_interface.terraform_lab_nic2.id]
+  network_interface_ids = [azurerm_network_interface.nic-02-vmcasclab2-test-001.id]
   size = "standard_B2ms"
   admin_username = ""
   admin_password = ""
   os_disk {
-    name = "terraformlab2-disk"
+    name = "stcasclab001"
     caching = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
@@ -57,10 +57,10 @@ resource "azurerm_windows_virtual_machine" "terraform_lab_vm2" {
 
 }
 
-resource "azurerm_virtual_machine_extension" "terraform_lab_vm2_extension" {
-  virtual_machine_id = azurerm_windows_virtual_machine.terraform_lab_vm2.id
+resource "azurerm_virtual_machine_extension" "ex-casclab-test-002" {
+  virtual_machine_id = azurerm_windows_virtual_machine.vm-casclab-test-002.id
   publisher = "Microsoft.Compute"
-  name = "terraform-lab-vm1-extension-iis"
+  name = "ex-casclab-test-002"
   type = "CustomScriptExtension"
   type_handler_version = "1.8"
   settings = <<SETTINGS

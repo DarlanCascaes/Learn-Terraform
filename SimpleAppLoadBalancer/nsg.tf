@@ -1,11 +1,11 @@
 #Creating the NSG which will be used for @LPublicIp
-resource "azurerm_network_security_group" "terraform_lab_nsg" {
-  name = "terraform-lab-nsg"
+resource "azurerm_network_security_group" "nsg-weballow-001" {
+  name = "nsg-weballow-001"
   resource_group_name = ""
   location = "eastus"
 
   security_rule {
-    name = "RDP"
+    name = "rdpallow"
     priority = "1000"
     direction = "Inbound"
     access = "Allow"
@@ -16,7 +16,7 @@ resource "azurerm_network_security_group" "terraform_lab_nsg" {
     destination_address_prefix = "*"
   }
   security_rule {
-    name = "WEBIN"
+    name = "webinallow"
     priority = "2000"
     direction = "Inbound"
     access = "Allow"
@@ -27,7 +27,7 @@ resource "azurerm_network_security_group" "terraform_lab_nsg" {
     destination_address_prefix = "*"
   }
   security_rule {
-    name = "WEBOUT"
+    name = "weboutallow"
     priority = "2001"
     direction = "Outbound"
     access = "Allow"
@@ -40,7 +40,7 @@ resource "azurerm_network_security_group" "terraform_lab_nsg" {
 }
 
 #Connecting NSG into the Subnet
-resource "azurerm_subnet_network_security_group_association" "terraform_lab_nsg_ga" {
-    subnet_id = azurerm_subnet.terraform_lab_subnet.id
-    network_security_group_id = azurerm_network_security_group.terraform_lab_nsg.id
+resource "azurerm_subnet_network_security_group_association" "nsg-weballow-001_ga" {
+    subnet_id = azurerm_subnet.snet-test-eastus-001.id
+    network_security_group_id = azurerm_network_security_group.nsg-weballow-001.id
 }

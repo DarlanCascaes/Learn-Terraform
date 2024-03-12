@@ -1,6 +1,6 @@
-resource "azurerm_lb_probe" "terraform_lab_probe" {
+resource "azurerm_lb_probe" "prb-lbe-test-001" {
 
   port = "80"
-  name = "terraform-lab-probe"
-  loadbalancer_id = azurerm_lb.terraform_lab_lb.id
+  name = "prb-lbe-test-001"
+  loadbalancer_id = azurerm_lb.lbe-test-eastus-001.id
 }

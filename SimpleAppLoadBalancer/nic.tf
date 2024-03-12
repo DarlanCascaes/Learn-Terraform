@@ -1,27 +1,27 @@
 
-resource "azurerm_network_interface" "terraform_lab_nic1" {
+resource "azurerm_network_interface" "nic-01-vmcasclab1-test-001" {
     resource_group_name = ""
     location = "eastus"
-    name = "terraform-lab-nic1"
+    name = "nic-01-vmcasclab1-test-001"
     ip_configuration {
-        name = "terraform-lab-nic1-ipc"
+        name = "nic-01-vmcasclab1-test-001-ipc"
         private_ip_address_allocation = "Dynamic"
-        public_ip_address_id = azurerm_public_ip.terraform_lab_vm1_pip.id
-        subnet_id = azurerm_subnet.terraform_lab_subnet.id
+        public_ip_address_id = azurerm_public_ip.pip-vmcasclab01-test-eastus-001.id
+        subnet_id = azurerm_subnet.snet-test-eastus-001.id
 
     }
   
 }
 
-resource "azurerm_network_interface" "terraform_lab_nic2" {
+resource "azurerm_network_interface" "nic-02-vmcasclab2-test-001" {
     resource_group_name = ""
     location = "eastus"
-    name = "terraform-lab-nic2"
+    name = "nic-02-vmcasclab2-test-001"
     ip_configuration {
-        name = "terraform-lab-nic2-ipc"
+        name = "nic-02-vmcasclab2-test-001-ipc"
         private_ip_address_allocation = "Dynamic"
-        public_ip_address_id = azurerm_public_ip.terraform_lab_vm2_pip.id
-        subnet_id = azurerm_subnet.terraform_lab_subnet.id
+        public_ip_address_id = azurerm_public_ip.pip-vmcasclab02-test-eastus-001.id
+        subnet_id = azurerm_subnet.snet-test-eastus-001.id
 
     }
   
