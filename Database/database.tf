@@ -15,7 +15,7 @@ provider "azurerm" {
 
 resource "azurerm_storage_account" "darlanexample" {
   name                     = "darlanexamplesa"
-  resource_group_name      = "rg_sb_eastus_40287_1_170808143113"
+  resource_group_name      = ""
   location                 = "eastus"
   account_tier             = "Standard"
   account_replication_type = "LRS"
@@ -23,11 +23,11 @@ resource "azurerm_storage_account" "darlanexample" {
 
 resource "azurerm_mssql_server" "darlanexample" {
   name                         = "darlan-example-sqlserver"
-  resource_group_name          = "rg_sb_eastus_40287_1_170808143113"
+  resource_group_name          = ""
   location                     = "eastus"
   version                      = "12.0"
-  administrator_login          = "4dm1n157r470r"
-  administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+  administrator_login          = ""
+  administrator_login_password = ""
 }
 
 resource "azurerm_mssql_database" "darlanexample" {
