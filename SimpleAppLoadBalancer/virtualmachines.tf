@@ -2,7 +2,7 @@
 resource "azurerm_windows_virtual_machine" "vmcasclabtest01" {
   name = "vmcasclabtest01"
   location = "eastus"
-  resource_group_name = ""
+  resource_group_name = "rg_sb_eastus_40287_1_171076047662"
   network_interface_ids = [azurerm_network_interface.nic-01-vmcasclab1-test-001.id]
   size = "standard_B2ms"
   admin_username = "dcascaes"
@@ -38,7 +38,7 @@ SETTINGS
 resource "azurerm_windows_virtual_machine" "vmcasclabtest02" {
   name = "vmcasclabtest02"
   location = "eastus"
-  resource_group_name = ""
+  resource_group_name = "rg_sb_eastus_40287_1_171076047662"
   network_interface_ids = [azurerm_network_interface.nic-02-vmcasclab2-test-001.id]
   size = "standard_B2ms"
   admin_username = "dcascaes"

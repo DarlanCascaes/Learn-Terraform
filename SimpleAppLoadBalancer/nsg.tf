@@ -1,7 +1,7 @@
 #Creating the NSG which will be used for @LPublicIp
 resource "azurerm_network_security_group" "nsg-weballow-001" {
   name = "nsg-weballow-001"
-  resource_group_name = ""
+  resource_group_name = "rg_sb_eastus_40287_1_171076047662"
   location = "eastus"
 
   security_rule {
