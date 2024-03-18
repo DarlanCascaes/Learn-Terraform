@@ -1,6 +1,6 @@
 
 resource "azurerm_network_interface" "nic-01-vmcasclab1-test-001" {
-    resource_group_name = "rg_sb_eastus_40287_1_17107176117"
+    resource_group_name = ""
     location = "eastus"
     name = "nic-01-vmcasclab1-test-001"
     ip_configuration {
@@ -14,7 +14,7 @@ resource "azurerm_network_interface" "nic-01-vmcasclab1-test-001" {
 }
 
 resource "azurerm_network_interface" "nic-02-vmcasclab2-test-001" {
-    resource_group_name = "rg_sb_eastus_40287_1_17107176117"
+    resource_group_name = ""
     location = "eastus"
     name = "nic-02-vmcasclab2-test-001"
     ip_configuration {
