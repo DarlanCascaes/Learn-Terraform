@@ -17,13 +17,13 @@ resource "azurerm_virtual_network" "terraform_network" {
   name                = "terraform_network-vnet"
   address_space       = ["10.0.0.0/16"]
   location            = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_170786208393"
+  resource_group_name = ""
 }
 
 # Create subnet
 resource "azurerm_subnet" "terraform_subnet" {
   name                 = "terraform_network-subnet"
-  resource_group_name = "rg_sb_eastus_40287_1_170786208393"
+  resource_group_name = ""
   virtual_network_name = azurerm_virtual_network.terraform_network.name
   address_prefixes     = ["10.0.1.0/24"]
 }
@@ -32,7 +32,7 @@ resource "azurerm_subnet" "terraform_subnet" {
 resource "azurerm_public_ip" "terraform_public_ip" {
   name                = "terraform-public-ip"
   location            = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_170786208393"
+  resource_group_name = ""
   allocation_method   = "Dynamic"
 }
 
@@ -40,7 +40,7 @@ resource "azurerm_public_ip" "terraform_public_ip" {
 resource "azurerm_network_security_group" "terraform_nsg" {
   name                = "terraform-nsg"
   location            = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_170786208393"
+  resource_group_name = ""
 
   security_rule {
     name                       = "RDP"
@@ -70,7 +70,7 @@ resource "azurerm_network_security_group" "terraform_nsg" {
 resource "azurerm_network_interface" "terraform_nic" {
   name                = "terraform-nic"
   location            = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_170786208393"
+  resource_group_name = ""
 
   ip_configuration {
     name                          = "nic_configuration"
@@ -90,7 +90,7 @@ resource "azurerm_network_interface_security_group_association" "example" {
 resource "azurerm_storage_account" "terraform_storage_account" {
   name                     = "darlantfstorageaccount"
   location                 = "eastus"
-  resource_group_name      = "rg_sb_eastus_40287_1_170786208393"
+  resource_group_name      = ""
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
@@ -99,10 +99,10 @@ resource "azurerm_storage_account" "terraform_storage_account" {
 # Create virtual machine
 resource "azurerm_windows_virtual_machine" "main" {
   name                  = "terraform-vm"
-  admin_username        = "azureuser"
-  admin_password        = "Testedev123"
+  admin_username        = ""
+  admin_password        = ""
   location              = "eastus"
-  resource_group_name   = "rg_sb_eastus_40287_1_170786208393"
+  resource_group_name   = ""
   network_interface_ids = [azurerm_network_interface.terraform_nic.id]
   size                  = "standard_B1s"
 
