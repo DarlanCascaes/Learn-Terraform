@@ -14,7 +14,7 @@ provider "azurerm"{
 
 resource "azurerm_lb" "lbe-test-eastus-001" {
   name = "lbe-test-eastus-001"
-  resource_group_name = "rg_sb_eastus_40287_1_171024271790"
+  resource_group_name = "rg_sb_eastus_40287_1_17107176117"
   sku = "Standard"
   location = "eastus"
 

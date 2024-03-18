@@ -3,5 +3,5 @@ resource "azurerm_virtual_network" "vnet-test-eastus-001" {
   name = "vnet-test-eastus-001"
   address_space = ["10.1.0.0/16"]
   location = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_171024271790"
+  resource_group_name = "rg_sb_eastus_40287_1_17107176117"
 }
