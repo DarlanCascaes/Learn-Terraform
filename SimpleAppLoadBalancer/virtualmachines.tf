@@ -1,9 +1,9 @@
 #Creating the VMs whici will be hosting the WEB page
 resource "azurerm_windows_virtual_machine" "vmcasclabtest01" {
   name = "vmcasclabtest01"
-  location = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_171076047662"
-  network_interface_ids = [azurerm_network_interface.nic-01-vmcasclab1-test-001.id]
+  location = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  network_interface_ids = [azurerm_network_interface.nic_01_vmcasclab1_test_001.id]
   size = "standard_B2ms"
   admin_username = "dcascaes"
   admin_password = "Dcascaes666"
@@ -22,10 +22,10 @@ resource "azurerm_windows_virtual_machine" "vmcasclabtest01" {
 
 }
 
-resource "azurerm_virtual_machine_extension" "ext-casclab-test-001" {
+resource "azurerm_virtual_machine_extension" "ext_casclab_test_001" {
   virtual_machine_id = azurerm_windows_virtual_machine.vmcasclabtest01.id
   publisher = "Microsoft.Compute"
-  name = "ext-casclab-test-002"
+  name = "ext-casclab-test-001"
   type = "CustomScriptExtension"
   type_handler_version = "1.8"
   settings = <<SETTINGS
@@ -37,9 +37,9 @@ SETTINGS
 
 resource "azurerm_windows_virtual_machine" "vmcasclabtest02" {
   name = "vmcasclabtest02"
-  location = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_171076047662"
-  network_interface_ids = [azurerm_network_interface.nic-02-vmcasclab2-test-001.id]
+  location = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  network_interface_ids = [azurerm_network_interface.nic_02_vmcasclab2_test_001.id]
   size = "standard_B2ms"
   admin_username = "dcascaes"
   admin_password = "Dcascaes666"
@@ -57,7 +57,7 @@ resource "azurerm_windows_virtual_machine" "vmcasclabtest02" {
 
 }
 
-resource "azurerm_virtual_machine_extension" "ext-casclab-test-002" {
+resource "azurerm_virtual_machine_extension" "ext_casclab_test_002" {
   virtual_machine_id = azurerm_windows_virtual_machine.vmcasclabtest02.id
   publisher = "Microsoft.Compute"
   name = "ext-casclab-test-002"
@@ -68,4 +68,33 @@ resource "azurerm_virtual_machine_extension" "ext-casclab-test-002" {
       "commandToExecute": "powershell Install-WindowsFeature -Name Web-Server -IncludeAllSubFeature -IncludeManagementTools"
     } 
 SETTINGS
+}
+
+
+resource "azurerm_network_interface" "nic_01_vmcasclab1_test_001" {
+    resource_group_name = azurerm_resource_group.rg.name
+    location = azurerm_resource_group.rg.location
+    name = "nic-01-vmcasclab1-test-001"
+    ip_configuration {
+        name = "nic-01-vmcasclab1-test-001-ipc"
+        private_ip_address_allocation = "Dynamic"
+        public_ip_address_id = azurerm_public_ip.pip_vmcasclab01_test_eastus_001.id
+        subnet_id = azurerm_subnet.snet_test_eastus_001.id
+
+    }
+  
+}
+
+resource "azurerm_network_interface" "nic_02_vmcasclab2_test_001" {
+    resource_group_name = azurerm_resource_group.rg.name
+    location = azurerm_resource_group.rg.location
+    name = "nic-02-vmcasclab2-test-001"
+    ip_configuration {
+        name = "nic-02-vmcasclab2-test-001-ipc"
+        private_ip_address_allocation = "Dynamic"
+        public_ip_address_id = azurerm_public_ip.pip_vmcasclab02_test_eastus_001.id
+        subnet_id = azurerm_subnet.snet_test_eastus_001.id
+
+    }
+  
 }

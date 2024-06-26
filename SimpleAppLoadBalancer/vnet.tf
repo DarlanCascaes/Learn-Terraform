@@ -1,7 +1,7 @@
 #Creating the virtual network which will be used for LB and VMs
-resource "azurerm_virtual_network" "vnet-test-eastus-001" {
+resource "azurerm_virtual_network" "vnet_test_eastus_001" {
   name = "vnet-test-eastus-001"
   address_space = ["10.1.0.0/16"]
-  location = "eastus"
-  resource_group_name = "rg_sb_eastus_40287_1_171076047662"
+  location = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
 }

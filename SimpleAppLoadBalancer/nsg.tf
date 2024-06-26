@@ -1,8 +1,8 @@
 #Creating the NSG which will be used for @LPublicIp
-resource "azurerm_network_security_group" "nsg-weballow-001" {
+resource "azurerm_network_security_group" "nsg_weballow_001" {
   name = "nsg-weballow-001"
-  resource_group_name = "rg_sb_eastus_40287_1_171076047662"
-  location = "eastus"
+  resource_group_name = azurerm_resource_group.rg.name
+  location = azurerm_resource_group.rg.location
 
   security_rule {
     name = "rdpallow"
@@ -40,7 +40,7 @@ resource "azurerm_network_security_group" "nsg-weballow-001" {
 }
 
 #Connecting NSG into the Subnet
-resource "azurerm_subnet_network_security_group_association" "nsg-weballow-001-ga" {
-    subnet_id = azurerm_subnet.snet-test-eastus-001.id
-    network_security_group_id = azurerm_network_security_group.nsg-weballow-001.id
+resource "azurerm_subnet_network_security_group_association" "nsg_weballow_001_ga" {
+    subnet_id = azurerm_subnet.snet_test_eastus_001.id
+    network_security_group_id = azurerm_network_security_group.nsg_weballow_001.id
 }
