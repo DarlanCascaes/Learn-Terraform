@@ -9,3 +9,26 @@ variable "region" {
   default = "East US"
   description = "Application Region"
 }
+
+variable "vm_properties"{
+  description = "Virtual machines properties"
+  type = map(any)
+  default = {
+    vmcasclabtest01 = {
+      name = "vmcasclabtest01"
+      size = "standard_B2ms"
+      admin_username = "dcascaes"
+      admin_password = "Dcascaes666"
+      os_disk_name = "stcasclab001"
+      storage_type = "Standard_LRS"
+    },
+    vmcasclabtest02 = {
+      name = "vmcasclabtest02"
+      size = "standard_B2ms"
+      admin_username = "dcascaes"
+      admin_password = "Dcascaes666"
+      os_disk_name = "stcasclab002"
+      storage_type = "Standard_LRS"
+    }
+  }
+}

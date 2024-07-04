@@ -21,7 +21,7 @@ resource "azurerm_lb_backend_address_pool_address" "bapa_test_eastus_001" {
   name = "bapa-test-eastus-001"
   backend_address_pool_id = azurerm_lb_backend_address_pool.bep_lbe_test_001.id
   virtual_network_id = azurerm_virtual_network.vnet_test_eastus_001.id
-  ip_address = azurerm_windows_virtual_machine.vmcasclabtest01.private_ip_address
+  ip_address = azurerm_windows_virtual_machine.this["vmcasclabtest01"].private_ip_address
 
 }
 
@@ -29,7 +29,7 @@ resource "azurerm_lb_backend_address_pool_address" "bapa_test_eastus_002" {
   name = "bapa-test-eastus-002"
   backend_address_pool_id = azurerm_lb_backend_address_pool.bep_lbe_test_001.id
   virtual_network_id = azurerm_virtual_network.vnet_test_eastus_001.id
-  ip_address = azurerm_windows_virtual_machine.vmcasclabtest02.private_ip_address
+  ip_address = azurerm_windows_virtual_machine.this["vmcasclabtest01"].private_ip_address
 }
 
 resource "azurerm_lb_rule" "inr_lbe_test_001" {
@@ -44,8 +44,7 @@ resource "azurerm_lb_rule" "inr_lbe_test_001" {
 }
 
 resource "azurerm_lb_probe" "prb_lbe_test_001" {
-
-  port = "80"
   name = "prb-lbe-test-001"
+  port = "80"
   loadbalancer_id = azurerm_lb.lbe_test_eastus_001.id
 }
